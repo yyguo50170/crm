@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace需要赋值为Dao类的全限定名称-->
+<mapper namespace="com.mycompany.crm.settings.dao.Userdao">
+    <!--id需要赋值为Dao类中执行该sql语句的方法名称
+        resultType需要赋值为该select语句执行后返回的单行结果的类型的全限定名称
+    -->
+    <select id="login" resultType="com.mycompany.crm.settings.domain.User">
+        select * from tbl_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
+    </select>
+</mapper>

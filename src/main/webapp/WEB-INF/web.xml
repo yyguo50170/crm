@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+           version="4.0">
+    <servlet>
+      <display-name>crm</display-name>
+      <servlet-name>dispatch</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+      <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:springmvc.xml</param-value>
+      </init-param>
+
+      <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <servlet-mapping>
+      <servlet-name>dispatch</servlet-name>
+      <!--
+          url-pattern表示什么请求需要交给servlet-name指定的servlet来处理。
+          使用框架时，url-pattern可以使用两种方式
+          1）使用扩展名的方式，*.xxx，其中xxx是自定义的扩展名。常用的方式:*.do、*.action、*.mvc等等。
+          2）使用斜杠"/" ,会替代tomcat的default的servlet
+             表示所有静态资源文件和其他的没有指定mapping的servlet的都通过DispatcherServlet来处理，
+             但是DispatcherServlet不能处理静态资源文件，所以以此方式访问静态资源文件会有问题，无法显示。
+             解决方法：①在springmvc的配置文件中加入<mvc:default-servlet-handler/>
+                      ②在springmvc的配置文件中加入<mvc:sources>
+             使用“/”的方式就不需要指定1）方式中的了
+      -->
+      <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+  <!--注册监听器ContextLoaderListener
+  监听器被创建后，会读取WEB-INF/applicationContext.xml文件
+  为什么要读取文件:因为在监听器被创建以后创建ApplicationContext对象，需要读取配置文件
+  WEB-INF/applicationContext.xml是监听器默认读取的文件路径，可以修改路径
+
+  修改路径:在context-param标签中
+
+  配置监听器的目的:创建spring容器，spring容器会把applicationContext.xml中的对象一次创建好，不需要多次在servlet中创建。
+-->
+  <context-param>
+    <!--contextConfigLocation表示配置文件的路径-->
+    <param-name>contextConfigLocation</param-name>
+    <!--自定义配置文件的路径-->
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <!--设置过滤器来指定字符集-->
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceRequestEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceResponseEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  </web-app>
