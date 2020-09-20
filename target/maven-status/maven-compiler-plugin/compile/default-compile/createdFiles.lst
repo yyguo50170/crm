@@ -1,5 +1,6 @@
 com\mycompany\crm\filter\LoginFilter.class
 com\mycompany\crm\utils\PrintJson.class
+com\mycompany\crm\vo\PaginationVO.class
 com\mycompany\crm\settings\service\LoginService.class
 com\mycompany\crm\utils\SqlSessionUtil.class
 com\mycompany\crm\exception\LoginException.class

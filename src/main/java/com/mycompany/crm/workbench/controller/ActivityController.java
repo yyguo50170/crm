@@ -2,12 +2,16 @@ package com.mycompany.crm.workbench.controller;
 
 import com.mycompany.crm.settings.domain.User;
 import com.mycompany.crm.utils.PrintJson;
+import com.mycompany.crm.vo.PaginationVO;
 import com.mycompany.crm.workbench.domain.Activity;
 import com.mycompany.crm.workbench.service.Impl.ActivityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,4 +47,15 @@ public class ActivityController {
         res = PrintJson.getJsonString(map);
         return res;
     }
+
+    @RequestMapping("/pageList.do")
+    @ResponseBody
+    public String pageList(HttpServletRequest req, HttpServletResponse resp){
+        String res;
+        PaginationVO vo = activityService.pageList(req,resp);
+        res = PrintJson.getJsonString(vo);
+        return res;
+    }
+
 }
+
