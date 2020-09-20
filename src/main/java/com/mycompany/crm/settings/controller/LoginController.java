@@ -3,7 +3,7 @@ package com.mycompany.crm.settings.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mycompany.crm.exception.LoginException;
 import com.mycompany.crm.settings.domain.User;
-import com.mycompany.crm.settings.service.imp.LoginServiceImp;
+import com.mycompany.crm.settings.service.impl.LoginServiceImpl;
 import com.mycompany.crm.utils.PrintJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class LoginController {
 
     @Autowired
-    private LoginServiceImp loginServiceImp;
+    private LoginServiceImpl loginServiceImpl;
 
     @RequestMapping("/login.do")
     @ResponseBody
@@ -31,7 +31,7 @@ public class LoginController {
         Map map = new HashMap();
         ObjectMapper om = new ObjectMapper();
         try {
-            user = loginServiceImp.login(req, resp);
+            user = loginServiceImpl.login(req, resp);
             map.put("success", true);
             req.getSession().setAttribute("user", user);
             res = PrintJson.getJsonString(map);

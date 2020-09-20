@@ -1,7 +1,7 @@
-package com.mycompany.crm.settings.service.imp;
+package com.mycompany.crm.settings.service.impl;
 
 import com.mycompany.crm.exception.LoginException;
-import com.mycompany.crm.settings.dao.Userdao;
+import com.mycompany.crm.settings.dao.UserDao;
 import com.mycompany.crm.settings.domain.User;
 import com.mycompany.crm.settings.service.LoginService;
 import com.mycompany.crm.utils.DateTimeUtil;
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;;
 
 
 @Service
-public class LoginServiceImp implements LoginService {
+public class LoginServiceImpl implements LoginService {
 
     @Resource
-    private Userdao userdao;
+    private UserDao userdao;
 
     public User login(HttpServletRequest req, HttpServletResponse resp) throws LoginException {
         String loginAct = req.getParameter("loginAct");
@@ -31,7 +31,7 @@ public class LoginServiceImp implements LoginService {
             throw new LoginException("账户已经过了有效期");
         }else if("0".equals(user.getLockState())){
             throw new LoginException("账户被锁定中");
-        }else if(user.getAllowIps()!=""&&user.getAllowIps().contains(req.getRemoteAddr())){
+        }else if(user.getAllowIps()!=""&&!user.getAllowIps().contains(req.getRemoteAddr())){
             throw new LoginException("当前ip禁止登陆该账户");
         }
         return user;

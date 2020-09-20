@@ -9,9 +9,8 @@
   <typeAliases>
   
   	<package name="com.mycompany.crm.settings.domain"/>
-  	<!--<package name="com.mycompany.crm.workbench.domain"/>-->
+  	<package name="com.mycompany.crm.workbench.domain"/>
 
-  
   </typeAliases>
   
 <!--  <environments default="development">-->
@@ -30,7 +29,7 @@
   <mappers>
    
       <package name="com.mycompany.crm.settings.dao"/>
-      <!--<package name="com.mycompany.crm.workbench.dao"/>-->
+      <package name="com.mycompany.crm.workbench.dao"/>
 
   </mappers>
 </configuration>

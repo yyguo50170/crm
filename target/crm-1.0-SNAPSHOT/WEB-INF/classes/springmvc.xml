@@ -11,8 +11,10 @@
        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--声明组件扫描器来创建使用注解声明的controller对象-->
-    <context:component-scan base-package="com.mycompany.crm.settings.controller"/>
-
+    <context:component-scan base-package="com.mycompany.crm.settings.controller,
+                                          com.mycompany.crm.workbench.controller"/>
+    <!--注册注解驱动-->
+    <mvc:default-servlet-handler/>
     <mvc:annotation-driven />
     <!--声明视图解析器，帮助设置视图文件路径，在controller中写视图文件时只需要写文件名称-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -22,23 +24,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--&lt;!&ndash;注册拦截器&ndash;&gt;
-    <mvc:interceptors>
-        &lt;!&ndash;一个interceptor标签里面一个拦截器&ndash;&gt;
-        <mvc:interceptor>
-            &lt;!&ndash;表示需要使用该拦截器的类，/**表示所有包下的所有类&ndash;&gt;
-            <mvc:mapping path="/**"/>
-            &lt;!&ndash;需要使用的拦截器&ndash;&gt;
-            <bean class="com.mycompany.interceptor.MyInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
-    &lt;!&ndash;注册注解驱动&ndash;&gt;
-    <mvc:annotation-driven/>
--->
     <!--在springmvc的配置文件中加入<mvc:default-servlet-handler/>,可以读取静态资源文件,而且必须要加入<mvc:annotation-driven/>-->
-    <mvc:default-servlet-handler/>
 
 <!--    &lt;!&ndash;所有静态资源文件都能被访问，也需要与<mvc:annotation-driven/>配合使用&ndash;&gt;
     <mvc:resources mapping="/static/**" location="/static/" />-->
-
 </beans>
