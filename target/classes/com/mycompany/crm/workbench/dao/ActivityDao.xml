@@ -103,4 +103,10 @@
 
     </select>
 
+    <delete id="delete" parameterType="String">
+        delete from tbl_activity where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

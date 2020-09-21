@@ -263,7 +263,7 @@
                                         {"success":true/false}
 
                                  */
-                                if (data.success) {
+                                if (data.success == true) {
 
                                     //删除成功后
                                     //回到第一页，维持每页展现的记录数

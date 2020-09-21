@@ -17,5 +17,6 @@ D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\settings\controller
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\settings\service\LoginService.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\dao\ActivityDao.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\domain\ActivityRemark.java
+D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\dao\ActivityRemarkDao.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\settings\service\impl\LoginServiceImpl.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\service\ActivityService.java

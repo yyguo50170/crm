@@ -6,11 +6,11 @@ import com.mycompany.crm.workbench.domain.Activity;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface ActivityService {
     List<User> getUserList();
     int save(Activity activity);
     PaginationVO pageList(HttpServletRequest req, HttpServletResponse resp);
+    boolean delete(HttpServletRequest req, HttpServletResponse resp);
 }

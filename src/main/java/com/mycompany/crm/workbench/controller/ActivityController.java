@@ -56,6 +56,14 @@ public class ActivityController {
         res = PrintJson.getJsonString(vo);
         return res;
     }
+    @RequestMapping("/delete.do")
+    @ResponseBody
+    public String delete(HttpServletRequest req, HttpServletResponse resp){
+        boolean result = activityService.delete(req,resp);
+        Map map = new HashMap();
+        map.put("success",result);
+        return PrintJson.getJsonString(map);
+    }
 
 }
 

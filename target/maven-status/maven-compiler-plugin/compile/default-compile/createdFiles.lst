@@ -19,3 +19,4 @@ com\mycompany\crm\workbench\domain\ActivityRemark.class
 com\mycompany\crm\settings\controller\LoginController.class
 com\mycompany\crm\settings\domain\User.class
 com\mycompany\crm\utils\UUIDUtil.class
+com\mycompany\crm\workbench\dao\ActivityRemarkDao.class
