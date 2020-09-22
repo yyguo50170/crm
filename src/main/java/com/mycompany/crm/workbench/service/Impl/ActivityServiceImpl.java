@@ -76,4 +76,23 @@ public class ActivityServiceImpl implements ActivityService {
             flag = false;
         return flag;
     }
+
+    public Map<String, Object> getUserListAndActivity(String id) {
+        List<User> uList = userDao.getUserList();
+        Activity a = activityDao.getActivityById(id);
+        Map<String,Object> res = new HashMap<String, Object>();
+        res.put("uList",uList);
+        res.put("a",a);
+        return res;
+    }
+
+    public int update(Activity activity) {
+        activity.setEditTime(DateTimeUtil.getSysTime());
+        return activityDao.update(activity);
+    }
+
+    public Activity detail(String id) {
+        Activity a = activityDao.getDetailById(id);
+        return a;
+    }
 }

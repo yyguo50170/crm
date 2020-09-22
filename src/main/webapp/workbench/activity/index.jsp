@@ -45,7 +45,7 @@
                     type: "get",
                     dataType: "json",
                     success: function (data) {
-                        var html = "<option></option>";
+                        var html = "";
                         //遍历出来的每一个n，就是每一个user对象
                         $.each(data, function (i, n) {
                             html += "<option value='" + n.id + "'>" + n.name + "</option>";
@@ -115,7 +115,7 @@
 
                             //做完添加操作后，应该回到第一页，维持每页展现的记录数
 
-                            //pageList(1, $("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+                            pageList(1, $("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
 
 
                             //清空添加操作模态窗口中的数据
@@ -179,7 +179,7 @@
                 $("#hidden-startDate").val($.trim($("#search-startDate").val()));
                 $("#hidden-endDate").val($.trim($("#search-endDate").val()));
 
-                pageList(1, 2);
+                pageList(1, $("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
 
             })
 
@@ -383,7 +383,8 @@
                         "startDate": $.trim($("#edit-startDate").val()),
                         "endDate": $.trim($("#edit-endDate").val()),
                         "cost": $.trim($("#edit-cost").val()),
-                        "description": $.trim($("#edit-description").val())
+                        "description": $.trim($("#edit-description").val()),
+                        "editBy":"${user.name}"
 
                     },
                     type: "post",

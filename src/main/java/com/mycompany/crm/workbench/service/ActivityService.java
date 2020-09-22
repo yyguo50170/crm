@@ -7,10 +7,17 @@ import com.mycompany.crm.workbench.domain.Activity;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 public interface ActivityService {
     List<User> getUserList();
     int save(Activity activity);
     PaginationVO pageList(HttpServletRequest req, HttpServletResponse resp);
     boolean delete(HttpServletRequest req, HttpServletResponse resp);
+
+    Map<String, Object> getUserListAndActivity(String id);
+
+    int update(Activity activity);
+
+    Activity detail(String id);
 }
