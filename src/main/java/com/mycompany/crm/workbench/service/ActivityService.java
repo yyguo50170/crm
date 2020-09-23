@@ -3,6 +3,7 @@ package com.mycompany.crm.workbench.service;
 import com.mycompany.crm.settings.domain.User;
 import com.mycompany.crm.vo.PaginationVO;
 import com.mycompany.crm.workbench.domain.Activity;
+import com.mycompany.crm.workbench.domain.ActivityRemark;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,4 +21,8 @@ public interface ActivityService {
     int update(Activity activity);
 
     Activity detail(String id);
+
+    List<ActivityRemark> getRemarkListByAid(String activityId);
+
+    boolean deleteRemark(String remarkId);
 }

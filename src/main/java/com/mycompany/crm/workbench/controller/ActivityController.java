@@ -4,6 +4,7 @@ import com.mycompany.crm.settings.domain.User;
 import com.mycompany.crm.utils.PrintJson;
 import com.mycompany.crm.vo.PaginationVO;
 import com.mycompany.crm.workbench.domain.Activity;
+import com.mycompany.crm.workbench.domain.ActivityRemark;
 import com.mycompany.crm.workbench.service.Impl.ActivityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,6 +90,22 @@ public class ActivityController {
         Activity a = activityService.detail(req.getParameter("id"));
         req.setAttribute("a",a);
         req.getRequestDispatcher("/workbench/activity/detail.jsp").forward(req,resp);
+    }
+
+    @RequestMapping("getRemarkListByAid.do")
+    @ResponseBody
+    public String getRemarkListByAid(String activityId){
+        List<ActivityRemark> list = activityService.getRemarkListByAid(activityId);
+        return PrintJson.getJsonString(list);
+    }
+
+    @RequestMapping("deleteRemark.do")
+    @ResponseBody
+    public String deleteRemark(String remarkId){
+        boolean res = activityService.deleteRemark(remarkId);
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("success",res);
+        return PrintJson.getJsonString(map);
     }
 
 }

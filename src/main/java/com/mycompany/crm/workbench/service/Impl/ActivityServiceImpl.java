@@ -8,6 +8,7 @@ import com.mycompany.crm.vo.PaginationVO;
 import com.mycompany.crm.workbench.dao.ActivityDao;
 import com.mycompany.crm.workbench.dao.ActivityRemarkDao;
 import com.mycompany.crm.workbench.domain.Activity;
+import com.mycompany.crm.workbench.domain.ActivityRemark;
 import com.mycompany.crm.workbench.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,5 +95,15 @@ public class ActivityServiceImpl implements ActivityService {
     public Activity detail(String id) {
         Activity a = activityDao.getDetailById(id);
         return a;
+    }
+
+    public List<ActivityRemark> getRemarkListByAid(String activityId) {
+        List<ActivityRemark> list = activityRemarkDao.getRemarkListByAid(activityId);
+        return list;
+    }
+
+    public boolean deleteRemark(String remarkId) {
+        int count = activityRemarkDao.deleteRemark(remarkId);
+        return count==1? true:false;
     }
 }
