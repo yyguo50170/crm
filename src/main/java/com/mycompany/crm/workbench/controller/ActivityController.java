@@ -1,10 +1,13 @@
 package com.mycompany.crm.workbench.controller;
 
 import com.mycompany.crm.settings.domain.User;
+import com.mycompany.crm.utils.DateTimeUtil;
 import com.mycompany.crm.utils.PrintJson;
+import com.mycompany.crm.utils.UUIDUtil;
 import com.mycompany.crm.vo.PaginationVO;
 import com.mycompany.crm.workbench.domain.Activity;
 import com.mycompany.crm.workbench.domain.ActivityRemark;
+import com.mycompany.crm.workbench.service.ActivityService;
 import com.mycompany.crm.workbench.service.Impl.ActivityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -106,6 +109,29 @@ public class ActivityController {
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("success",res);
         return PrintJson.getJsonString(map);
+    }
+    @RequestMapping("saveRemark.do")
+    @ResponseBody
+    public String saveRemark(HttpServletRequest request,HttpServletResponse response){
+        String noteContent = request.getParameter("noteContent");
+        String id = UUIDUtil.getUUID();
+        String createTime = DateTimeUtil.getSysTime();
+        String createBy = ((User)request.getSession().getAttribute("user")).getName();
+        String editFlag = "0";
+        String activityId = request.getParameter("activityId");
+
+        ActivityRemark ar = new ActivityRemark();
+        ar.setId(id);
+        ar.setNoteContent(noteContent);
+        ar.setCreateTime(createTime);
+        ar.setCreateBy(createBy);
+        ar.setEditFlag(editFlag);
+        ar.setActivityId(activityId);
+        boolean flag = activityService.saveRemark(ar);
+        Map<String,Object> res = new HashMap<String, Object>();
+        res.put("success",flag);
+        res.put("ar",ar);
+        return PrintJson.getJsonString(res);
     }
 
 }

@@ -106,4 +106,12 @@ public class ActivityServiceImpl implements ActivityService {
         int count = activityRemarkDao.deleteRemark(remarkId);
         return count==1? true:false;
     }
+
+    public boolean saveRemark(ActivityRemark ar) {
+        int res = activityRemarkDao.saveRemark(ar);
+        if(res!=1){
+            return false;
+        }
+        return true;
+    }
 }

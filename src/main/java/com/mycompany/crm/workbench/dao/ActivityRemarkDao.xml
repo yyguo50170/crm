@@ -22,10 +22,29 @@
     </delete>
 
     <select id="getRemarkListByAid" parameterType="String" resultType="com.mycompany.crm.workbench.domain.ActivityRemark">
-        select * from tbl_activity_remark where activityId = #{id}
+        select * from tbl_activity_remark where activityId = #{id} order by createTime desc
     </select>
 
     <delete id="deleteRemark" parameterType="String">
         delete from tbl_activity_remark where id = #{id}
     </delete>
+
+    <insert id="saveRemark" parameterType="com.mycompany.crm.workbench.domain.ActivityRemark">
+        insert into tbl_activity_remark (
+            id,
+            noteContent,
+            createTime,
+            createBy,
+            editFlag,
+            activityId
+
+        ) values (
+            #{id},
+            #{noteContent},
+            #{createTime},
+            #{createBy},
+            #{editFlag},
+            #{activityId}
+        )
+    </insert>
 </mapper>

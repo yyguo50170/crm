@@ -8,4 +8,5 @@ public interface ActivityRemarkDao {
     int deleteByAids(String[] aids);
     List<ActivityRemark> getRemarkListByAid(String activityId);
     int deleteRemark(String remarkId);
+    int saveRemark(ActivityRemark ar);
 }
