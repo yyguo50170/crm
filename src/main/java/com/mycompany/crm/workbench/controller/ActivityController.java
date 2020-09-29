@@ -134,5 +134,22 @@ public class ActivityController {
         return PrintJson.getJsonString(res);
     }
 
+    @RequestMapping("updateRemark.do")
+    @ResponseBody
+    public String updateRemark(HttpServletRequest request,HttpServletResponse response){
+        ActivityRemark ar = new ActivityRemark();
+
+        ar.setId(request.getParameter("remarkId"));
+        ar.setNoteContent(request.getParameter("noteContent"));
+        ar.setEditTime(DateTimeUtil.getSysTime());
+        ar.setEditBy(((User)request.getSession().getAttribute("user")).getName());
+        ar.setEditFlag("1");
+
+        boolean flag = activityService.updateRemark(ar);
+        Map<String,Object> res = new HashMap<String, Object>();
+        res.put("success",flag);
+        res.put("ar",ar);
+        return PrintJson.getJsonString(res);
+    }
 }
 

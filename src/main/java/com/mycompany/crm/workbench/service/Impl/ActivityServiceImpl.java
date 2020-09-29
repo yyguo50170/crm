@@ -114,4 +114,11 @@ public class ActivityServiceImpl implements ActivityService {
         }
         return true;
     }
+
+    public boolean updateRemark(ActivityRemark ar) {
+        int res = activityRemarkDao.updateRemark(ar);
+        if(res!=1)
+            return false;
+        return true;
+    }
 }

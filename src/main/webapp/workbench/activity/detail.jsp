@@ -82,26 +82,47 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						html+='<div id ="'+data.ar.id+'" class="remarkDiv" style="height: 60px;">',
 						html+='<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">',
 						html+='<div style="position: relative; top: -40px; left: 40px;" >',
-						html+='<h5>'+data.ar.noteContent+'</h5>',
-						html+='<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;"> '+(data.ar.createTime)+' 由'+(data.ar.createBy)+'</small>',
+						html+='<h5 id="e'+data.ar.id+'">'+data.ar.noteContent+'</h5>',
+						html+='<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;" id ="s'+data.ar.id+'"> '+(data.ar.createTime)+' 由'+(data.ar.createBy)+'</small>',
 						html+='<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">',
-						html+='<a class="myHref" href="javascript:void(0);" ><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>',
+						html+='<a class="myHref" href="javascript:void(0);" onclick="updateRemark(\''+data.ar.id+'\')" ><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>',
 						html+='&nbsp;&nbsp;&nbsp;&nbsp;',
 						html+='<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\''+data.ar.id+'\')"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: #FF0000;"></span></a>',
 						html+='</div>',
 						html+='</div>',
 						html+='</div>'
-						//alert(html);
 						$("#remarkDiv").before(html);
-						//alert(添加备注成功);
 					}else {
 						alert(添加备注失败);
 					}
 				}
 			})
-
-
 		});
+
+		$("#updateRemarkBtn").click(function () {
+            var remarkId = $("#remarkId").val();
+            $.ajax({
+                url:"workbench/activity/updateRemark.do",
+                type:"get",
+                dataType:"json",
+                data:{
+                    "remarkId":remarkId,
+                    "noteContent":$("#noteContent").val()
+                },
+                //{"success":true/false,"ar":ar}
+                success:function (data) {
+                    if(data.success){
+                        $("#s"+remarkId).html(data.ar.editTime+' 由'+data.ar.editBy)
+                        $("#e"+remarkId).html(data.ar.noteContent)
+                        $("#editRemarkModal").modal("hide");
+                    }else{
+                        alert(修改备注失败);
+                    }
+                }
+
+            })
+
+        })
 	})
 
 	function showRemarkList(){
@@ -118,10 +139,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				html+='<div id ="'+n.id+'" class="remarkDiv" style="height: 60px;">',
 				html+='<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">',
 				html+='<div style="position: relative; top: -40px; left: 40px;" >',
-				html+='<h5>'+n.noteContent+'</h5>',
-				html+='<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;"> '+(n.editFlag==0? n.createTime:n.editTime)+' 由'+(n.editFlag==0? n.createBy:n.editBy)+'</small>',
+				html+='<h5 id="e'+n.id+'">'+n.noteContent+'</h5>',
+				html+='<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;" id ="s'+n.id+'"> '+(n.editFlag==0? n.createTime:n.editTime)+' 由'+(n.editFlag==0? n.createBy:n.editBy)+'</small>',
 				html+='<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">',
-				html+='<a class="myHref" href="javascript:void(0);" ><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>',
+				html+='<a class="myHref" href="javascript:void(0);" onclick="updateRemark(\''+n.id+'\')" ><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>',
 				html+='&nbsp;&nbsp;&nbsp;&nbsp;',
 				html+='<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\''+n.id+'\')"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: #FF0000;"></span></a>',
 				html+='</div>',
@@ -151,6 +172,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		})
 	}
 
+	function updateRemark(remarkId){
+	    var note = $("#e"+remarkId).html();
+        $("#noteContent").val(note);
+        $("#remarkId").val(remarkId);
+        $("#editRemarkModal").modal("show");
+	}
 </script>
 
 </head>
