@@ -3,6 +3,63 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
            version="4.0">
+
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceRequestEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceResponseEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.mycompany.crm.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+
+  <!--注册监听器ContextLoaderListener
+  监听器被创建后，会读取WEB-INF/applicationContext.xml文件
+  为什么要读取文件:因为在监听器被创建以后创建ApplicationContext对象，需要读取配置文件
+  WEB-INF/applicationContext.xml是监听器默认读取的文件路径，可以修改路径
+
+  修改路径:在context-param标签中
+
+  配置监听器的目的:创建spring容器，spring容器会把applicationContext.xml中的对象一次创建好，不需要多次在servlet中创建。
+-->
+  <context-param>
+    <!--contextConfigLocation表示配置文件的路径-->
+    <param-name>contextConfigLocation</param-name>
+    <!--自定义配置文件的路径-->
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>com.mycompany.crm.listener.SysInitListener</listener-class>
+  </listener>
+  
+  
     <servlet>
       <display-name>crm</display-name>
       <servlet-name>dispatch</servlet-name>
@@ -32,60 +89,6 @@
       -->
       <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-  <!--注册监听器ContextLoaderListener
-  监听器被创建后，会读取WEB-INF/applicationContext.xml文件
-  为什么要读取文件:因为在监听器被创建以后创建ApplicationContext对象，需要读取配置文件
-  WEB-INF/applicationContext.xml是监听器默认读取的文件路径，可以修改路径
-
-  修改路径:在context-param标签中
-
-  配置监听器的目的:创建spring容器，spring容器会把applicationContext.xml中的对象一次创建好，不需要多次在servlet中创建。
--->
-
-  <!--设置过滤器来指定字符集-->
-  <filter>
-    <filter-name>characterEncodingFilter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>utf-8</param-value>
-    </init-param>
-    <init-param>
-      <param-name>forceRequestEncoding</param-name>
-      <param-value>true</param-value>
-    </init-param>
-    <init-param>
-      <param-name>forceResponseEncoding</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>characterEncodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-  <context-param>
-    <!--contextConfigLocation表示配置文件的路径-->
-    <param-name>contextConfigLocation</param-name>
-    <!--自定义配置文件的路径-->
-    <param-value>classpath:applicationContext.xml</param-value>
-  </context-param>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-
-
-
-  <filter>
-    <filter-name>LoginFilter</filter-name>
-    <filter-class>com.mycompany.crm.filter.LoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-  <filter-name>LoginFilter</filter-name>
-  <url-pattern>*.do</url-pattern>
-  <url-pattern>*.jsp</url-pattern>
-</filter-mapping>
 
 
   </web-app>

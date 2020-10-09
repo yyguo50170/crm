@@ -12,10 +12,13 @@
 
     <!--声明组件扫描器来创建使用注解声明的controller对象-->
     <context:component-scan base-package="com.mycompany.crm.settings.controller,
-                                          com.mycompany.crm.workbench.controller"/>
+                                          com.mycompany.crm.workbench.controller,
+                                          com.mycompany.crm.listener"/>
     <!--注册注解驱动-->
-    <mvc:default-servlet-handler/>
     <mvc:annotation-driven />
+    <!--在springmvc的配置文件中加入<mvc:default-servlet-handler/>,可以读取静态资源文件,而且必须要加入<mvc:annotation-driven/>-->
+    <mvc:default-servlet-handler/>
+
     <!--声明视图解析器，帮助设置视图文件路径，在controller中写视图文件时只需要写文件名称-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--设置视图文件的前缀，文件路径，前后都需要加“/”-->
@@ -24,7 +27,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--在springmvc的配置文件中加入<mvc:default-servlet-handler/>,可以读取静态资源文件,而且必须要加入<mvc:annotation-driven/>-->
+
 
 <!--    &lt;!&ndash;所有静态资源文件都能被访问，也需要与<mvc:annotation-driven/>配合使用&ndash;&gt;
     <mvc:resources mapping="/static/**" location="/static/" />-->

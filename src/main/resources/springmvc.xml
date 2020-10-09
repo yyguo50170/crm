@@ -12,7 +12,8 @@
 
     <!--声明组件扫描器来创建使用注解声明的controller对象-->
     <context:component-scan base-package="com.mycompany.crm.settings.controller,
-                                          com.mycompany.crm.workbench.controller"/>
+                                          com.mycompany.crm.workbench.controller,
+                                          com.mycompany.crm.listener"/>
     <!--注册注解驱动-->
     <mvc:annotation-driven />
     <!--在springmvc的配置文件中加入<mvc:default-servlet-handler/>,可以读取静态资源文件,而且必须要加入<mvc:annotation-driven/>-->
