@@ -7,7 +7,6 @@ import com.mycompany.crm.utils.UUIDUtil;
 import com.mycompany.crm.vo.PaginationVO;
 import com.mycompany.crm.workbench.domain.Activity;
 import com.mycompany.crm.workbench.domain.ActivityRemark;
-import com.mycompany.crm.workbench.service.ActivityService;
 import com.mycompany.crm.workbench.service.Impl.ActivityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

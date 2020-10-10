@@ -26,7 +26,7 @@ public class DicServiceImpl implements DicService {
         for (DicType type:dcTypes) {
             String code = type.getCode();
             List<DicValue> dcValue = dicValueDao.getListByCode(code);
-            map.put(type+"List",dcValue);
+            map.put(code+"List",dcValue);
         }
         return map;
     }

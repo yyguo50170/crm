@@ -5,7 +5,9 @@
 <configuration>
 	
   <!--<properties resource="jdbc.properties"/>-->
-  
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
   <typeAliases>
   
   	<package name="com.mycompany.crm.settings.domain"/>
@@ -24,12 +26,11 @@
 <!--      </dataSource>-->
 <!--    </environment>-->
 <!--  </environments>-->
-  
- 
+
+
   <mappers>
-   
       <package name="com.mycompany.crm.settings.dao"/>
       <package name="com.mycompany.crm.workbench.dao"/>
-
   </mappers>
+
 </configuration>

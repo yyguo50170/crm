@@ -26,4 +26,6 @@
         <property name="basePackage" value="com.mycompany.crm.settings.dao,
                                             com.mycompany.crm.workbench.dao"/>
     </bean>
+
+
 </beans>

@@ -13,6 +13,7 @@ com\mycompany\crm\workbench\dao\ClueRemarkDao.class
 com\mycompany\crm\settings\controller\LoginController.class
 com\mycompany\crm\settings\domain\User.class
 com\mycompany\crm\utils\UUIDUtil.class
+com\mycompany\crm\workbench\controller\ClueController.class
 com\mycompany\crm\filter\LoginFilter.class
 com\mycompany\crm\utils\PrintJson.class
 com\mycompany\crm\settings\domain\DicType.class
