@@ -77,7 +77,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 				url : "workbench/clue/save.do",
 				data : {
-
 					"fullname" : $.trim($("#create-fullname").val()),
 					"appellation" : $.trim($("#create-appellation").val()),
 					"owner" : $.trim($("#create-owner").val()),
@@ -93,8 +92,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					"contactSummary" : $.trim($("#create-contactSummary").val()),
 					"nextContactTime" : $.trim($("#create-nextContactTime").val()),
 					"address" : $.trim($("#create-address").val())
-
-
 				},
 				type : "post",
 				dataType : "json",
@@ -113,7 +110,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 						//关闭模态窗口
 						$("#createClueModal").modal("hide");
-
+						alert("添加线索成功");
 					}else{
 
 						alert("添加线索失败");
@@ -164,7 +161,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<div class="col-sm-10" style="width: 300px;">
 								<select class="form-control" id="create-appellation">
 								  <option></option>
-									<option>${test}</option>
 								  <c:forEach items="${appellationList}" var="a">
 									  <option value="${a.value}">${a.text}</option>
 								  </c:forEach>
@@ -554,7 +550,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<tbody>
 						<tr>
 							<td><input type="checkbox" /></td>
-							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/clue/detail.do?id=464072f8e0234409981c8940c9d6a506';">马云先生</a></td>
+							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='workbench/clue/detail.do?id=d934136ff9f6483b86179dc12c8c7197';">零一先生</a></td>
 							<td>动力节点</td>
 							<td>010-84846003</td>
 							<td>12345678901</td>

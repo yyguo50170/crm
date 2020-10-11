@@ -35,3 +35,4 @@ com\mycompany\crm\utils\DateTimeUtil.class
 com\mycompany\crm\workbench\dao\ContactsActivityRelationDao.class
 com\mycompany\crm\workbench\domain\ActivityRemark.class
 com\mycompany\crm\workbench\dao\ActivityRemarkDao.class
+com\mycompany\crm\workbench\domain\Clue.class
