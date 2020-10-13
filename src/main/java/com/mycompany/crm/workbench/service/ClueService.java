@@ -11,4 +11,6 @@ public interface ClueService {
     boolean save(Clue c);
 
     Clue getDetailById(String id);
+
+    Boolean unbund(String relationId);
 }

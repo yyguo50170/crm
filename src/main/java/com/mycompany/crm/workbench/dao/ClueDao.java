@@ -7,4 +7,6 @@ public interface ClueDao {
     int save(Clue c);
 
     Clue getDetailById(String id);
+
+    int unbund(String relationId);
 }

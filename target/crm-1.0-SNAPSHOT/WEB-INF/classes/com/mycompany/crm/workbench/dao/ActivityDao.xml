@@ -128,6 +128,7 @@
     </update>
 
     <select id="getDetailById" resultType="com.mycompany.crm.workbench.domain.Activity">
+
         select
         a.id,
         a.name,
@@ -146,4 +147,20 @@
         on u.id = a.owner
         where a.id=#{id}
     </select>
+
+    <select id="getActivityListByClueId" resultType="Activity">
+        select
+            car.id as id,
+            a.name,
+            a.startDate,
+            a.endDate,
+            u.name as owner
+        from tbl_activity a
+        join tbl_user u
+        on u.id = a.owner
+        join tbl_clue_activity_relation car
+        on a.id = car.activityId
+        where car.clueId = #{cludId}
+    </select>
+
 </mapper>

@@ -4,7 +4,10 @@ import com.mycompany.crm.settings.domain.User;
 import com.mycompany.crm.utils.DateTimeUtil;
 import com.mycompany.crm.utils.PrintJson;
 import com.mycompany.crm.utils.UUIDUtil;
+import com.mycompany.crm.workbench.domain.Activity;
 import com.mycompany.crm.workbench.domain.Clue;
+import com.mycompany.crm.workbench.service.ActivityService;
+import com.mycompany.crm.workbench.service.Impl.ActivityServiceImpl;
 import com.mycompany.crm.workbench.service.Impl.ClueServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +28,8 @@ public class ClueController {
 
     @Autowired
     private ClueServiceImpl clueServiceImpl;
+    @Autowired
+    private ActivityServiceImpl activityServiceImpl;
 
     @RequestMapping("/getUserList.do")
     @ResponseBody
@@ -50,5 +55,21 @@ public class ClueController {
         Clue c = clueServiceImpl.getDetailById(req.getParameter("id"));
         req.setAttribute("c",c);
         req.getRequestDispatcher("/workbench/clue/detail.jsp").forward(req,resp);
+    }
+
+    @RequestMapping("/getActivityListByClueId.do")
+    @ResponseBody
+    public String getActivityListByClueId(String clueId){
+        List<Activity> aList = activityServiceImpl.getActivityListByClueId(clueId);
+        return PrintJson.getJsonString(aList);
+    }
+
+    @RequestMapping("/unbund.do")
+    @ResponseBody
+    public String unbund(String id){
+        Boolean res = clueServiceImpl.unbund(id);
+        Map<String,Boolean> map = new HashMap<String, Boolean>();
+        map.put("success",res);
+        return PrintJson.getJsonString(map);
     }
 }

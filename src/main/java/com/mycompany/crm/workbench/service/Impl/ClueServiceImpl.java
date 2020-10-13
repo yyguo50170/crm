@@ -30,4 +30,9 @@ public class ClueServiceImpl implements ClueService {
     public Clue getDetailById(String id) {
         return clueDao.getDetailById(id);
     }
+
+    public Boolean unbund(String relationId) {
+        int res = clueDao.unbund(relationId);
+        return res==1? true:false;
+    }
 }

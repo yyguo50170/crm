@@ -234,44 +234,56 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	 */
 	function unbund(id) {
+		$.ajax({
+			url:"workbench/clue/unbund.do",
+			data:{
+				"id":id
+			},
+			type:"post",
+			dataType:"json",
+			success:function (data) {
+					if(data.success){
+						showActivityList();
+					}else{
+						alert("解除关联失败");
+					}
+			}
+		})
+	}
+	/*function unbund(id) {
 
 		$.ajax({
 
-			url : "workbench/clue/unbund.do",
-			data : {
+					url: "workbench/clue/unbund.do",
+					data: {
 
-				"id" : id
+						"id": id
 
-			},
-			type : "post",
-			dataType : "json",
-			success : function (data) {
+					},
+					type: "post",
+					dataType: "json",
+					success: function (data) {
 
-				/*
+						/*
 
-					data
-						{"success":true/false}
+							data
+								{"success":true/false}
 
-				 */
+						 */
+		/*				if (data.success) {
 
-				if(data.success){
+							//解除关联成功
+							//刷新关联的市场活动列表
+							showActivityList();
 
-					//解除关联成功
-					//刷新关联的市场活动列表
-					showActivityList();
+						} else {
 
-				}else{
-
-					alert("解除关联失败");
-
-				}
-
-			}
-
-		})
-
+							alert("解除关联失败");
+						}
+					}
+				})
 	}
-
+	*/
 </script>
 
 </head>

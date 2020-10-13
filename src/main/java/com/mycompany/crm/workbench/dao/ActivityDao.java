@@ -13,5 +13,5 @@ public interface ActivityDao {
     Activity getActivityById(String id);
     int update(Activity activity);
     Activity getDetailById(String id);
-
+    List<Activity> getActivityListByClueId(String clueId);
 }
