@@ -72,4 +72,23 @@ public class ClueController {
         map.put("success",res);
         return PrintJson.getJsonString(map);
     }
+
+    @RequestMapping("/getActivityListByNameAndNotByClueId.do")
+    @ResponseBody
+    public String getActivityListByNameAndNotByClueId(String aname,String clueId){
+        System.out.println("参数aname为"+aname);
+        List<Activity> list = activityServiceImpl.getActivityListByNameAndNotByClueId(aname,clueId);
+        return PrintJson.getJsonString(list);
+    }
+
+    @RequestMapping("/bund.do")
+    @ResponseBody
+    public String bund(HttpServletRequest req){
+        String cid = req.getParameter("cid");
+        String aids[] = req.getParameterValues("aid");
+        boolean flag = clueServiceImpl.bund(cid,aids);
+        Map<String,Boolean> map = new HashMap<String,Boolean>();
+        map.put("success",flag);
+        return PrintJson.getJsonString(map);
+    }
 }

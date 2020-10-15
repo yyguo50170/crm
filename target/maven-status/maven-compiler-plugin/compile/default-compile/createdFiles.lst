@@ -26,6 +26,7 @@ com\mycompany\crm\workbench\service\Impl\ActivityServiceImpl.class
 com\mycompany\crm\settings\service\impl\DicServiceImpl.class
 com\mycompany\crm\workbench\service\ActivityService.class
 com\mycompany\crm\workbench\dao\ActivityDao.class
+com\mycompany\crm\workbench\domain\ClueActivityRelation.class
 com\mycompany\crm\utils\ServiceFactory.class
 com\mycompany\crm\utils\MD5Util.class
 com\mycompany\crm\workbench\dao\ContactsDao.class

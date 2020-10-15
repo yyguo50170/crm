@@ -60,9 +60,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			//如果是回车键
 			if(event.keyCode==13){
-
 				//alert("查询并展现市场活动列表");
-
 				$.ajax({
 
 					url : "workbench/clue/getActivityListByNameAndNotByClueId.do",
@@ -75,7 +73,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					type : "get",
 					dataType : "json",
 					success : function (data) {
-
 						/*
 
 							data
@@ -98,13 +95,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 						$("#activitySearchBody").html(html);
 
-
-
-
 					}
 
 				})
-
 
 				//展现完列表后，记得将模态窗口默认的回车行为禁用掉
 				return false;
@@ -113,8 +106,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		})
 
-		//为关联按钮绑定事件，执行关联表的添加操作
 		$("#bundBtn").click(function () {
+			var $xz =$("input[name=xz]:checked");
+			if($xz.length==0){
+				alert("请选择需要关联的市场活动");}
+			else {
+				var param="cid=${c.id}&";
+				for(var i = 0;i<$xz.length;i++){
+					param+="aid="+$($xz[i]).val();
+					if(i != $xz.length-1){
+						param+="&";
+					}
+				}
+			$.ajax({
+				url : "workbench/clue/bund.do",
+				data : param,
+				type : "post",
+				dataType : "json",
+				success : function (data) {
+					if(data.success){
+						//添加完成
+						$("#activitySearchBody").html("");
+						$("#aname").val("");
+						showActivityList();
+						$("#bundModal").modal("hide");
+					}else {
+						alert("添加关联失败");
+					}
+				}
+				})
+			}
+		})
+		//为关联按钮绑定事件，执行关联表的添加操作
+		/*$("#bundBtn").click(function () {
 
 			var $xz = $("input[name=xz]:checked");
 
@@ -156,7 +180,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							data
 								{"success":true/false}
 
-						 */
+
 
 						if(data.success){
 
@@ -184,7 +208,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		})
 
 	});
-
+*/
 	function showActivityList() {
 
 		$.ajax({
@@ -250,40 +274,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			}
 		})
 	}
-	/*function unbund(id) {
-
-		$.ajax({
-
-					url: "workbench/clue/unbund.do",
-					data: {
-
-						"id": id
-
-					},
-					type: "post",
-					dataType: "json",
-					success: function (data) {
-
-						/*
-
-							data
-								{"success":true/false}
-
-						 */
-		/*				if (data.success) {
-
-							//解除关联成功
-							//刷新关联的市场活动列表
-							showActivityList();
-
-						} else {
-
-							alert("解除关联失败");
-						}
-					}
-				})
-	}
-	*/
+	})
 </script>
 
 </head>
@@ -303,7 +294,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					<div class="btn-group" style="position: relative; top: 18%; left: 8px;">
 						<form class="form-inline" role="form">
 						  <div class="form-group has-feedback">
-						    <input type="text" class="form-control" id="aname" style="width: 300px;" placeholder="请输入市场活动名称，支持模糊查询123">
+						    <input type="text" class="form-control" id="aname" style="width: 300px;" placeholder="请输入市场活动名称，支持模糊查询">
 						    <span class="glyphicon glyphicon-search form-control-feedback"></span>
 						  </div>
 						</form>

@@ -24,6 +24,7 @@ D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\utils\UUIDUtil.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\settings\domain\DicType.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\utils\DateTimeUtil.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\domain\Clue.java
+D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\domain\ClueActivityRelation.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\exception\LoginException.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\settings\dao\UserDao.java
 D:\JavaCode\IEDA-project\crm\src\main\java\com\mycompany\crm\workbench\service\Impl\ActivityServiceImpl.java

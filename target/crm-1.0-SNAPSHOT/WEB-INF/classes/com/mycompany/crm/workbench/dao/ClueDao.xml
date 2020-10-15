@@ -85,4 +85,17 @@
     <delete id="unbund">
         delete from tbl_clue_activity_relation where id = #{relationId}
     </delete>
+
+    <insert id="bund" parameterType="ClueActivityRelation">
+        insert into tbl_clue_activity_relation(
+            id,
+            clueId,
+            activityId
+        )
+        values (
+            #{id},
+            #{clueId},
+            #{activityId}
+        )
+    </insert>
 </mapper>

@@ -13,4 +13,6 @@ public interface ClueService {
     Clue getDetailById(String id);
 
     Boolean unbund(String relationId);
+
+    boolean bund(String cid, String[] aids);
 }
