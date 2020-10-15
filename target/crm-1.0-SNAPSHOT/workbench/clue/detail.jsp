@@ -126,6 +126,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				success : function (data) {
 					if(data.success){
 						//添加完成
+						$("#activitySearchBody").html("");
+						$("#aname").val("");
 						showActivityList();
 						$("#bundModal").modal("hide");
 					}else {
