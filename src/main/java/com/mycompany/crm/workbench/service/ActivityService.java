@@ -32,4 +32,6 @@ public interface ActivityService {
     List<Activity>getActivityListByClueId(String clueId);
 
     List<Activity> getActivityListByNameAndNotByClueId(String aname, String clueId);
+
+    List<Activity> getActivityListByName(String aname);
 }

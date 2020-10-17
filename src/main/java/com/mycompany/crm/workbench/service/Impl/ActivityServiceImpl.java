@@ -131,4 +131,9 @@ public class ActivityServiceImpl implements ActivityService {
         List<Activity> list = activityDao.getActivityListByNameAndNotByClueId(aname,clueId);
         return list;
     }
+
+    public List<Activity> getActivityListByName(String aname) {
+        List<Activity> list = activityDao.getActivityListByName(aname);
+        return list;
+    }
 }

@@ -145,7 +145,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<div class="form-group">
                             <label for="edit-website" class="col-sm-2 control-label">公司网站</label>
                             <div class="col-sm-10" style="width: 300px;">
-                                <input type="text" class="form-control" id="edit-website" value="http://www.bjpowernode.com">
+                                <input type="text" class="form-control" id="edit-website" value="http://www.mycompany.com">
                             </div>
 							<label for="edit-phone" class="col-sm-2 control-label">公司座机</label>
 							<div class="col-sm-10" style="width: 300px;">
@@ -273,14 +273,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.jsp';">动力节点</a></td>
 							<td>zhangsan</td>
 							<td>010-84846003</td>
-							<td>http://www.bjpowernode.com</td>
+							<td>http://www.mycompany.com</td>
 						</tr>
                         <tr class="active">
                             <td><input type="checkbox" /></td>
                             <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.jsp';">动力节点</a></td>
                             <td>zhangsan</td>
                             <td>010-84846003</td>
-                            <td>http://www.bjpowernode.com</td>
+                            <td>http://www.mycompany.com</td>
                         </tr>
 					</tbody>
 				</table>

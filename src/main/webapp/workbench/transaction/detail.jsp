@@ -1,8 +1,8 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.bjpowernode.crm.settings.domain.DicValue" %>
+<%@ page import="com.mycompany.crm.settings.domain.DicValue" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Set" %>
-<%@ page import="com.bjpowernode.crm.workbench.domain.Tran" %>
+<%@ page import="com.mycompany.crm.workbench.domain.Tran" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";

@@ -17,4 +17,6 @@ public interface ActivityDao {
     List<Activity> getActivityListByClueId(String clueId);
 
     List<Activity> getActivityListByNameAndNotByClueId(@Param("aname") String aname,@Param("clueId") String clueId);
+
+    List<Activity> getActivityListByName(String aname);
 }

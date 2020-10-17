@@ -239,7 +239,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<h4>转换线索 <small>${param.fullname}${param.appellation}-${param.company}</small></h4>
 	</div>
 	<div id="create-customer" style="position: relative; left: 40px; height: 35px;">
-		新建客户123：${param.company}
+		新建客户：${param.company}
 	</div>
 	<div id="create-contact" style="position: relative; left: 40px; height: 35px;">
 		新建联系人：${param.fullname}${param.appellation}

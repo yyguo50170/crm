@@ -6,7 +6,6 @@ import com.mycompany.crm.utils.PrintJson;
 import com.mycompany.crm.utils.UUIDUtil;
 import com.mycompany.crm.workbench.domain.Activity;
 import com.mycompany.crm.workbench.domain.Clue;
-import com.mycompany.crm.workbench.service.ActivityService;
 import com.mycompany.crm.workbench.service.Impl.ActivityServiceImpl;
 import com.mycompany.crm.workbench.service.Impl.ClueServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +89,12 @@ public class ClueController {
         Map<String,Boolean> map = new HashMap<String,Boolean>();
         map.put("success",flag);
         return PrintJson.getJsonString(map);
+    }
+
+    @RequestMapping("/getActivityListByName.do")
+    @ResponseBody
+    public String getActivityListByName(String aname){
+        List<Activity> alist = activityServiceImpl.getActivityListByName(aname);
+        return PrintJson.getJsonString(alist);
     }
 }
